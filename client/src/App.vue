@@ -1,5 +1,6 @@
 <template>
-  
+  <h1>Overlook Hotel</h1>
+
 </template>
 
 <script>

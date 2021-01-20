@@ -1,12 +1,13 @@
 const express = require('express');
-const app = express();
-const parser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
-const createRouter = require('./helpers/create_router.js');
-const cors = require("cors");
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
+const app = express();
+app.use(bodyParser.json());
 app.use(cors());
-app.use(parser.json());
+
+const createRouter = require('./helpers/create_router.js');
 
 MongoClient.connect('mongodb://localhost:27017')
   .then((client) => { 
@@ -16,10 +17,6 @@ MongoClient.connect('mongodb://localhost:27017')
       app.use('/api/bookings', bookingsRouter);
   })
   .catch(console.error); 
-
-app.get('/', function (req, res) {
-    res.json({message: 'Hello World!'});
-  });
 
 app.listen(3000, function () {
     console.log('App running on port 3000');
