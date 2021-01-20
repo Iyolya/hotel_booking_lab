@@ -1,13 +1,19 @@
 <template>
   <div>
-      <ul>
+      
         <li v-for="(booking, index) in bookings" :key="index" :bookings="bookings">
             Name {{booking.name}} 
-            {{booking.email}}     
+            Email {{booking.email}}
+            Checked in {{booking.checked_in}}
             <button v-on:click="handleDelete(booking._id)">Delete Booking</button>
-            </li>
+            </li>   
+            <!-- <li v-if="booking.checked_in</li> -->
+            <!-- <ul v-if="bookings.checked_in" id="checked"> -->
+              
+            
+          
         
-      </ul>
+      <!-- </ul> -->
   </div>
 </template>
 
