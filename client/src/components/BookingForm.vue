@@ -1,5 +1,5 @@
 <template lang="html">
-	<form id="booking-form" v-on:submit.prevent="handleSubmit">
+	<form id="booking-form" v-on:submit="postBooking" method="post">
 		<h2>New Booking</h2>
 		<div class="formWrap">
 			<label for="name">Name:</label>
@@ -34,7 +34,7 @@ export default {
         }
     }, 
 
-    method: {
+    methods: {
         postBooking(event) {
             event.preventDefault()
             const newBooking = {
@@ -42,8 +42,10 @@ export default {
                 email: this.email,
                 checked_in: this.checked_in
             }
+            console.log(newBooking)
+
         BookingService.postBooking(newBooking)
-        .then(newBooking => eventBus.$emit('booking-completed', newBooking))
+        .then(booking => eventBus.$emit('booking-completed', booking))
         }
     }
 

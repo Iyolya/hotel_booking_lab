@@ -15,7 +15,7 @@ import {eventBus} from '@/main.js'
 
 export default {
     name: 'booking-list',
-    props: ['bookings'],
+    // props: ['bookings'],
     data: function() {
         return {
             bookings: []
